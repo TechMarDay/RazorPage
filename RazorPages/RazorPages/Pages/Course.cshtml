@@ -9,9 +9,9 @@
             <h3>Course page</h3>
         </div>
         <div class="row g-2">
-            @await Component.InvokeAsync("CoursesComponent", new { count = 2})
+            @*@await Component.InvokeAsync("CoursesComponent", new { count = 2})*@
             
-            @*<vc:popular-brews count="2" />*@
+            <vc:courses-component count="2" />
         </div>
     </div>
 </div>
