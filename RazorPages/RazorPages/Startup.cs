@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +25,16 @@ namespace RazorPages
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/index", "home");
+                options.Conventions.AddPageRoute("/index", "trang-chu");
+            });
+
+            services.Configure<RouteOptions>(options =>
+            {
+                options.ConstraintMap.Add("demoCustom", typeof(DemoCustomConstraint));
+            });
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICourseService, CourseService>();
@@ -55,6 +65,18 @@ namespace RazorPages
             {
                 endpoints.MapRazorPages();
             });
+            
+            app.UseStatusCodePages();
+
+            app.Use(async (context, next) => {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/404";
+                    await next();
+                }
+            });
+
         }
     }
 }
