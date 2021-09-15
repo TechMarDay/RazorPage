@@ -1,0 +1,23 @@
+﻿@page "/course/{slug}"
+@model DetailCourseModel
+@{
+}
+<div class="container">
+    <h1 class="mt-4 mb-3">
+        @Model.Course.Name
+    </h1>
+    <hr />
+    <h3>Detail</h3>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <img class="img-fluid rounded" src="~/images/Course/@Model.Course.ImageFile" alt="">
+            <hr>
+            <p>@Model.Course.Description</p>
+            <hr>
+        </div>
+        <div class="col-md-4">
+            <partial name="Advertisement" model="@("Quảng cáo tại detail")" />
+        </div>
+    </div>
+</div>

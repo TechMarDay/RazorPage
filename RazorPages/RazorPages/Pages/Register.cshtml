@@ -7,7 +7,7 @@
 
 <div class="container">
     <br />
-    <br/>
+    <br />
     <h1 class="mt-4 mb-3">
         Register!
     </h1>
@@ -42,7 +42,7 @@
                 <div class="control-group form-group">
                     <div class="controls">
                         <label asp-for="User.Password">Password:</label>
-                        <input asp-for="User.Password" class="form-control"  type="password"/>
+                        <input asp-for="User.Password" class="form-control" type="password" />
                         <span asp-validation-for="User.Password" class="alert-danger"></span>
                     </div>
                 </div>
@@ -64,6 +64,21 @@
                 </form>
             </div>
             <hr />
+
+            <partial name="Advertisement" model="@("Quảng cáo tại register")" />
+
+            <br />
         </div>
     </div>
 </div>
+
+
+@section FooterSecond{
+    <h5 class="text-uppercase">Footer text for register page</h5>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+        molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
+        aliquam voluptatem veniam, est atque cumque eum delectus sint!
+    </p>
+} 
