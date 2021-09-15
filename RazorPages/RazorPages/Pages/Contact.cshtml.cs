@@ -7,9 +7,9 @@ namespace RazorPages.Pages
 {
     public class ContactModel : PageModel
     {
-        [BindProperty] //(SupportsGet = true) mặc định BindProperty không binding khi truy cập http get, 
+        //(SupportsGet = true) mặc định BindProperty không binding khi truy cập http get, 
         //set SupportsGet = true sẽ hỗ trợ http get
-
+        [BindProperty]
         public Contact Contact { get; set; }
 
         public string Message { get; private set; }
@@ -30,8 +30,10 @@ namespace RazorPages.Pages
         {
             if (ModelState.IsValid)
             {
+                var name = Request.Form["Contact.Name"];
+                var email = Request.Form["Contact.Email"];
                 EmailService.SendMail(contact);
-                Message = "Your email was sent to our team.";
+                Message = $"Hi {name}, Your email - {email} was sent to our team.";
             }
         }
     }
