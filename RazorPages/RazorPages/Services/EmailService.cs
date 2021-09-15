@@ -4,7 +4,7 @@ namespace RazorPages.Services
 {
     public static class EmailService
     {
-        public static void SendMail(UserModel contact)
+        public static void SendMail(Contact contact)
         {
             //to do something
         }
