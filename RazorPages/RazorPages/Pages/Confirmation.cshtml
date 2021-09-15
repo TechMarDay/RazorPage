@@ -1,0 +1,15 @@
+﻿@page
+@model ConfirmationModel
+@{
+}
+
+<div class="container contact-container">
+    <h1 class="mt-4 mb-3">
+        Thank you!
+    </h1>
+    <hr />
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <h3>@Model.Message</h3>
+    }
+</div>

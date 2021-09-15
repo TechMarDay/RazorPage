@@ -16,18 +16,19 @@ namespace RazorPages.Pages
             //Page load logic
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
                 Message = "You have been Successfully Registered";
+                return new RedirectToPageResult("Confirmation", "Register");
             }
+            return Page();
         }
 
-        public void OnPostSubscribe(string email)
+        public IActionResult OnPostSubscribe(string email)
         {
-            if (!string.IsNullOrEmpty(email))
-                Message = "You have been Successfully Subscribed";
+            return new RedirectToPageResult("Confirmation", "Subscribe");
         }
     }
 }
